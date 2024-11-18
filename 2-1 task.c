@@ -27,8 +27,7 @@ double input(void);
 int main(void) 
 { 
     printf("Введите два числа\n"); 
-    double a = input(), b = input(); 
-    menu(); 
+    double a = input(), b = input();
     int choice = input(); 
     switch(choice) 
     { 
@@ -47,7 +46,8 @@ int main(void)
             printf("a = %lf, b = %lf\n", a, b); 
             break; 
         default: 
-            printf("Неправильный ввод"); 
+            printf("Неправильный ввод");
+            exit(EXIT_FAILURE);
     } 
     return 0; 
 } 
