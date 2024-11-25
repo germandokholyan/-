@@ -2,7 +2,7 @@
 #include <math.h>
 #include <errno.h>
 #include <stdlib.h>
-
+ 
 /**
  * @brief Проверка, лежат ли три точки на одной прямой
  * @return 1, если лежат; 0, если нет
