@@ -5,9 +5,9 @@
 
 /**
  * @brief Проверка, лежат ли три точки на одной прямой
- * @return 1, если лежат; 0, если нет
+ * @return true, если лежат; false, если нет
  */
-double geta(const double x1, const double y1, const double x2, const double y2, const double x3, const double y3);
+bool geta(const double x1, const double y1, const double x2, const double y2, const double x3, const double y3);
 
 /**
  * @brief Вычисляет угол в градусах между отрезками AB и BC
@@ -45,9 +45,9 @@ int main(void)
 
 
 
-double geta(const double x1, const double y1, const double x2, const double y2, const double x3, const double y3)
+bool geta(const double x1, const double y1, const double x2, const double y2, const double x3, const double y3)
 {
-    return (x3 - x1) * (y2 - y1) == (y3 - y1) * (x2 - x1);
+    return ads((x3 - x1) * (y2 - y1) - (y3 - y1) * (x2 - x1)) < epsilon();
 }
 
 double getb(const double x1, const double y1, const double x2, const double y2, const double x3, const double y3)
