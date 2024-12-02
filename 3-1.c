@@ -38,7 +38,7 @@ bool check_x_value(double x);
 * @param x значение переменной x
 * @return Возвращает значение функции если нет деления на нуль, в ином случае вызывает ошибку
 */
-double getFunction(double x);
+double GetFunction(double x);
 
 /**
 * @brief Точка входа в программу
