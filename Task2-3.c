@@ -2,6 +2,8 @@
 #include <math.h>
 #include <errno.h>
 #include <stdlib.h>
+#include <stdbool.h>
+#include <float.h>
 
 /**
  * @brief Проверка, лежат ли три точки на одной прямой
@@ -47,7 +49,7 @@ int main(void)
 
 bool geta(const double x1, const double y1, const double x2, const double y2, const double x3, const double y3)
 {
-    return ads((x3 - x1) * (y2 - y1) - (y3 - y1) * (x2 - x1)) < epsilon();
+    return ((x3 - x1) * (y2 - y1) - (y3 - y1) * (x2 - x1)) < DBL_EPSILON;
 }
 
 double getb(const double x1, const double y1, const double x2, const double y2, const double x3, const double y3)
