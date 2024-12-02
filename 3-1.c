@@ -38,7 +38,7 @@ bool check_x_value(double x);
 * @param x значение переменной x
 * @return Возвращает значение функции если нет деления на нуль, в ином случае вызывает ошибку
 */
-double GetFunction(double x);
+double get_function(double x);
 
 /**
 * @brief Точка входа в программу
@@ -105,7 +105,7 @@ bool check_x_value(double x)
 	return x > DBL_EPSILON;
 }
 
-double getFunction(double x)
+double get_function(double x)
 {
 
 	return 3*x - 4*log(x) - 5 ;
