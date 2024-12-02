@@ -57,7 +57,7 @@ int main(void)
 	{
 		if (!check_x_value(x))
 		{
-			printf("ошибка ввода x!");
+			printf("нет значения!");
 		}
 		else
 		{
