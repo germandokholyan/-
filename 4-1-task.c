@@ -125,7 +125,7 @@ int main(void)
         break;
     default:
         errno = ERANGE;
-        perror("Function does not exist\n");
+        perror("Функция не существует\n");
         exit(EXIT_FAILURE);
         break;
     } 
