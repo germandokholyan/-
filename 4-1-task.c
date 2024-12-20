@@ -143,7 +143,7 @@ int main(void)
     printf("Массив после реверса первых %zu элементов: ", k);
     print_array(invarray, n);
     free(invarray);
-    target = input();
+    int target = input();
     printf("Введите целевое произведение для проверки наличия пары соседних элементов: ");
 
     if (presence_pair(array, n, target)) {
