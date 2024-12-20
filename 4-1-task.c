@@ -108,7 +108,7 @@ int main(void)
 
     printf("Random - %d\n", Random);
     printf("Manual - %d\n", manual);
-    
+
     int choice = input();
     switch (choice)
     {
@@ -125,7 +125,7 @@ int main(void)
         break;
     default:
         errno = ERANGE;
-        perror("Функция не существует\n");
+        perror("Function does not exist\n");
         exit(EXIT_FAILURE);
         break;
     } 
@@ -138,14 +138,15 @@ int main(void)
 
     printf("Введите количество элементов для реверса: ");
     size_t k = no_negativ_input();
-    reverse_first_k_elements(array, n, k);
+    int* invarray = copy(array, n);
+    reverse_first_k_elements(invarray, n, k);
     printf("Массив после реверса первых %zu элементов: ", k);
-    print_array(array, n);
-
+    print_array(invarray, n);
+    free(invarray);
     int target;
     printf("Введите целевое произведение для проверки наличия пары соседних элементов: ");
     target = input();
-    
+
     if (presence_pair(array, n, target)) {
         printf("Найдена пара соседних элементов с произведением %d.\n", target);
     } else {
