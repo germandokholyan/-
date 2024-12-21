@@ -275,7 +275,7 @@ bool presence_pair(int* array, size_t n, int target)
 {
     for (size_t i = 0; i < n - 1; i++)
     {
-        if (array[i] * array[i + 1]) - target < DBL_EPSILON; 
+        if (array[i] * array[i + 1] == target) 
         {
             return true;
         }
