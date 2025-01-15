@@ -4,9 +4,9 @@
 #include <time.h>
 #include <float.h>
 #include <stdbool.h>
-#include <mach.h>
+#include <math.h>
 /**
-* @brief Считывает введеное значение 
+* @brief Считывает введеное значение
 * @return Возвращает введенное значение
 */
 int input(void);
@@ -16,7 +16,7 @@ int input(void);
  * @param n размер массива
  * @return Возвращает массив с n элементами
  */
-int* get_array(const size_t n); 
+int* get_array(const size_t n);
 
 /**
  * @brief Проверяет введенное число на неотрицательность
@@ -66,51 +66,16 @@ void fill_array_manual(int* array, const size_t n);
 */
 void print_array(const int* array, const size_t n);
 
-/**
- * @brief Находит индекс минимального элемента в массиве.
- * @param array Указатель на массив целых чисел.
- * @param n Размер массива.
- * @return Возвращает индекс минимального элемента.
- */
 int min_elem_index(const int* array, int n);
 
-/**
- * @brief Вычисляет среднее арифметическое элементов массива.
- * @param array Указатель на массив целых чисел.
- * @param n Размер массива.
- * @return Возвращает среднее арифметическое элементов массива как целое число.
- */
 int average_meaning(const int* array, int n);
 
-/**
- * @brief Заменяет минимальный элемент массива на среднее арифметическое элементов.
- * @param array Указатель на массив целых чисел.
- * @param n Размер массива.
- */
 void replace_min_and_average(int* array, int n);
 
-/**
- * @brief Проверяет, содержит ли число цифру 5.
- * @param number Целое число для проверки.
- * @return Возвращает 1, если цифра 5 найдена, иначе 0.
- */
 int contains_five(int number);
 
-/**
- * @brief Создает новый массив, исключая элементы, содержащие цифру 5.
- * @param array Указатель на исходный массив целых чисел.
- * @param n Размер исходного массива.
- * @param m Указатель на переменную для хранения размера нового массива.
- * @return Возвращает указатель на новый массив без элементов, содержащих цифру 5.
- */
 int* array_no_five(const int* array, int n, int* m);
 
-/**
- * @brief Создает новый массив, преобразуя элементы исходного массива: возводит в квадрат элементы с четными индексами и умножает на 2 элементы с нечетными индексами.
- * @param array Указатель на исходный массив целых чисел.
- * @param n Размер исходного массива.
- * @return Возвращает указатель на новый массив с преобразованными элементами.
- */
 int* array_a_c(const int* array, int n);
 
 
@@ -130,6 +95,7 @@ enum request
 */
 int main(void)
 {
+    system("chcp 1251");
     printf("Введите размер массива: ");
     size_t n = no_negativ_input();
     int* array = get_array(n);
@@ -156,14 +122,14 @@ int main(void)
         perror("Function does not exist\n");
         exit(EXIT_FAILURE);
         break;
-    } 
+    }
 
     printf("Содержимое массива: ");
     print_array(array, n);
 
     int* clon_array = copy(array, n);
     replace_min_and_average(clon_array, n);
-    
+
     printf("массив после замены минимального элемента на средний:\n");
     print_array(clon_array, n);
     free(clon_array);
@@ -173,7 +139,7 @@ int main(void)
     int* arr_no_five = array_no_five(cloned_array, n, &m);
     print_array(arr_no_five, m);
     free(arr_no_five);
-    printf("массив А после перехода в массив С:"); 
+    printf("массив А после перехода в массив С:");
     int* array_c = array_a_c(cloned_array, n);
     print_array(array_c, n);
 }
@@ -190,12 +156,11 @@ int input(void)
     return value;
 }
 
-int* get_array(const size_t n) 
+int* get_array(const size_t n)
 {
     int* array = (int*)malloc(n * sizeof(int));
     return array;
 }
-
 int no_negativ_input(void)
 {
     int value = input();
@@ -229,7 +194,7 @@ void fill_array_random(int* array, const size_t n, const int min, const int max)
     }
     for (size_t i = 0; i < n; i++)
     {
-        array[i] = (rand() % (max-min+1)) + min;
+        array[i] = (rand() % (max - min + 1)) + min;
     }
 }
 
@@ -245,14 +210,14 @@ void fill_array_manual(int* array, const size_t n)
 
 int* copy(const int* array, const size_t n)
 {
-	check_array(array);
-	int* coparray = get_array(n);
-	for (size_t i = 0; i < n; ++i)
-	{
-		coparray[i] = array[i];
-	}
+    check_array(array);
+    int* coparray = get_array(n);
+    for (size_t i = 0; i < n; ++i)
+    {
+        coparray[i] = array[i];
+    }
 
-	return coparray;
+    return coparray;
 }
 
 void print_array(const int* array, const size_t n)
@@ -275,7 +240,7 @@ int min_elem_index(const int* array, int n)
             min_ind = i;
         }
     }
-    return min_ind; 
+    return min_ind;
 }
 
 int average_meaning(const int* array, int n)
@@ -285,7 +250,7 @@ int average_meaning(const int* array, int n)
     {
         sum += array[i];
     }
-    double average = sum/n;
+    double average = sum / n;
     return average;
 }
 
@@ -296,10 +261,11 @@ void replace_min_and_average(int* array, int n)
     array[min_ind] = (int)average; // Приводим среднее к целому типу
 }
 
-int contains_five(int number) 
+int contains_five(int number)
 {
+    number = abs(number);
     while (number > 0) {
-        if (number % 10 == 5) 
+        if (number % 10 == 5)
         {
             return 1; // Цифра 5 найдена
         }
@@ -312,12 +278,12 @@ int* array_no_five(const int* array, int n, int* m)
 {
     int* arr = get_array(n);
     *m = 0;
-    for(size_t i = 0; i < n; i++)
+    for (size_t i = 0; i < n; i++)
     {
         if (contains_five(array[i]) == 0)
         {
             arr[*m] = array[i];
-            *(m)++; 
+            *m = *m + 1;
         }
     }
     return arr;
